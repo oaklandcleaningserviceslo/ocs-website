@@ -125,11 +125,11 @@ header.scrolled{
 .hero h1 em{font-style:italic;color:var(--gold)}
 .hero p{font-size:18px;color:rgba(255,255,255,.7);max-width:560px;margin:0 auto 40px;line-height:1.7;font-weight:300}
 .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
-.hero-stats{display:flex;justify-content:center;align-items:center;text-align:center;gap:0;flex-wrap:nowrap}
-.stat{text-align:center;padding:0 50px}
+.hero-stats{display:flex;justify-content:center;align-items:center;text-align:center;gap:0}
+.stat{text-align:center;padding:0 50px;border-right:1px solid rgba(201,168,76,.2)}
+.stat:last-child{border-right:none}
 .stat-number{display:block;font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--gold);line-height:1.2}
 .stat-label{display:block;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.5);font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px}
-.stat-divider{width:1px;align-self:stretch;background:rgba(201,168,76,.2);flex-shrink:0;margin:10px 0}
 .hero-scroll{
   position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;
   color:rgba(255,255,255,.4);font-size:12px;letter-spacing:2px;text-transform:uppercase;
@@ -363,7 +363,7 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
   .hero-stats{flex-wrap:wrap;gap:24px}
   .stat{padding:0 32px}
   .stat-number{font-size:40px}
-  .stat-divider{display:none}
+  .stat{border-right:none}
 }
 @media(max-width:600px){
   .hero h1{font-size:34px}
@@ -371,7 +371,7 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
   .hero-stats{gap:24px}
   .stat{padding:0 16px}
   .stat-number{font-size:36px}
-  .stat-divider{display:none}
+  .stat{border-right:none}
   .service-grid{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
   .trusted-logos{gap:20px;flex-direction:column;align-items:center}
@@ -436,12 +436,10 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
           <span class="stat-number">30+</span>
           <span class="stat-label">Properties Served</span>
         </div>
-        <div class="stat-divider"></div>
         <div class="stat">
           <span class="stat-number">30</span>
           <span class="stat-label">Years of Excellence</span>
         </div>
-        <div class="stat-divider"></div>
         <div class="stat">
           <span class="stat-number">5,000+</span>
           <span class="stat-label">Units Annually</span>
