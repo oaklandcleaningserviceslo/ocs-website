@@ -15,12 +15,12 @@
   --teal:#007B8A;
   --green:#2bb673;
   --gold:#F4A300;
-  --bg:#f5f7fb;
+  --bg:#f7f8fc;
   --light-blue:#E8F4F8;
   --text:#0b1220;
   --muted:#5b677a;
   --card:#ffffff;
-  --border:rgba(15,42,82,.12);
+  --border:rgba(15,42,82,.08);
   --shadow:0 12px 28px rgba(11,27,52,.10);
   --radius:18px;
   --max:1140px;
@@ -31,6 +31,9 @@ body{
   font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
   color:var(--text);
   background:#fff;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(0,123,138,.04),transparent),
+    radial-gradient(ellipse 60% 40% at 80% 100%,rgba(0,51,102,.03),transparent);
   line-height:1.6;
 }
 a{color:inherit;text-decoration:none}
@@ -84,8 +87,16 @@ header{
 
 /* HERO */
 .hero{
-  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 50%,var(--teal) 100%);
-  color:#fff;padding:80px 0 90px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse 120% 80% at 10% 80%,rgba(0,123,138,.4),transparent 50%),
+    radial-gradient(ellipse 80% 60% at 90% 20%,rgba(43,182,115,.15),transparent 50%),
+    linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 40%,#004d6e 70%,var(--teal) 100%);
+  color:#fff;padding:100px 0 110px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events:none;
 }
 .hero::after{
   content:'';position:absolute;bottom:-2px;left:0;right:0;height:80px;
@@ -118,8 +129,9 @@ header{
 /* TRUST BAR */
 .trust-bar{
   padding:40px 0;
-  background:var(--light-blue);
-  border-bottom:1px solid rgba(0,51,102,.08);
+  background:linear-gradient(135deg,var(--light-blue) 0%,rgba(0,123,138,.06) 100%);
+  border-bottom:1px solid rgba(0,51,102,.06);
+  border-top:1px solid rgba(0,51,102,.04);
 }
 .trust-items{
   display:flex;justify-content:center;gap:48px;flex-wrap:wrap;align-items:center;
@@ -132,7 +144,7 @@ header{
 }
 
 /* SERVICES */
-.services{padding:80px 0}
+.services{padding:80px 0;background:linear-gradient(180deg,#fff 0%,var(--bg) 100%)}
 .services .section-head{text-align:center;margin-bottom:48px}
 .services .section-head h2{font-size:36px;margin-bottom:12px}
 .services .section-head p{color:var(--muted);max-width:600px;margin:0 auto;font-size:17px}
@@ -164,7 +176,12 @@ header{
 }
 
 /* SCOPE OF WORK */
-.scope{padding:80px 0;background:linear-gradient(180deg,var(--bg),#fff)}
+.scope{
+  padding:80px 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%,rgba(0,123,138,.04),transparent),
+    linear-gradient(180deg,var(--bg) 0%,#fff 100%);
+}
 .scope .section-head{text-align:center;margin-bottom:48px}
 .scope .section-head h2{font-size:36px;margin-bottom:12px}
 .scope .section-head p{color:var(--muted);max-width:650px;margin:0 auto;font-size:17px}
@@ -184,22 +201,16 @@ header{
   font-size:14px;color:var(--text);line-height:1.5;
 }
 .scope-list li::before{
-  content:'';flex-shrink:0;
-  width:20px;height:20px;margin-top:1px;
+  content:'\2713';flex-shrink:0;
+  width:22px;height:22px;margin-top:0;
   border-radius:50%;
   background:linear-gradient(135deg,var(--teal),var(--green));
-  display:grid;place-items:center;
-}
-.scope-check{
-  position:relative;
-}
-.scope-check::after{
-  content:'\2713';position:absolute;top:1px;left:5px;
-  color:#fff;font-size:11px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:12px;font-weight:900;line-height:1;
 }
 
 /* SERVICE AREA */
-.area{padding:80px 0}
+.area{padding:80px 0;background:#fff}
 .area .section-head{text-align:center;margin-bottom:48px}
 .area .section-head h2{font-size:36px;margin-bottom:12px}
 .area .section-head p{color:var(--muted);max-width:600px;margin:0 auto;font-size:17px}
@@ -217,8 +228,11 @@ header{
 /* TESTIMONIALS */
 .testimonials{
   padding:80px 0;
-  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);
-  color:#fff;
+  background:
+    radial-gradient(ellipse 100% 80% at 80% 20%,rgba(0,123,138,.25),transparent 50%),
+    radial-gradient(ellipse 60% 60% at 10% 80%,rgba(43,182,115,.1),transparent 50%),
+    linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 60%,#004d6e 100%);
+  color:#fff;position:relative;
 }
 .testimonials .section-head{text-align:center;margin-bottom:48px}
 .testimonials .section-head h2{font-size:36px;margin-bottom:12px}
@@ -245,7 +259,12 @@ header{
 .testimonial-info span{color:rgba(255,255,255,.6);font-size:13px}
 
 /* WHY */
-.why{padding:80px 0;background:var(--bg)}
+.why{
+  padding:80px 0;
+  background:
+    radial-gradient(ellipse 50% 50% at 80% 50%,rgba(0,123,138,.05),transparent),
+    var(--bg);
+}
 .why .section-head{text-align:center;margin-bottom:48px}
 .why .section-head h2{font-size:36px;margin-bottom:12px}
 .why .section-head p{color:var(--muted);max-width:600px;margin:0 auto;font-size:17px}
@@ -267,7 +286,10 @@ header{
 .why-card p{color:var(--muted);font-size:13px;line-height:1.55}
 
 /* QUOTE SECTION */
-.quote-section{padding:80px 0}
+.quote-section{
+  padding:80px 0;
+  background:linear-gradient(180deg,#fff,var(--bg));
+}
 .quote-section .section-head{text-align:center;margin-bottom:40px}
 .quote-section .section-head h2{font-size:36px;margin-bottom:12px}
 .quote-section .section-head p{color:var(--muted);max-width:600px;margin:0 auto;font-size:17px}
@@ -293,7 +315,9 @@ header{
 /* CTA BANNER */
 .cta-banner{
   padding:60px 0;
-  background:linear-gradient(135deg,var(--teal),var(--navy-2));
+  background:
+    radial-gradient(ellipse 80% 80% at 20% 50%,rgba(43,182,115,.15),transparent 50%),
+    linear-gradient(135deg,var(--teal),var(--navy-2));
   color:#fff;text-align:center;
 }
 .cta-banner h2{font-size:32px;margin-bottom:12px}
@@ -533,58 +557,58 @@ footer p{color:rgba(255,255,255,.65);font-size:14px;line-height:1.6}
       <div class="scope-card">
         <h3>&#129379; Kitchen</h3>
         <ul class="scope-list">
-          <li><span class="scope-check"></span>All cabinets cleaned inside and out</li>
-          <li><span class="scope-check"></span>Countertops and backsplash scrubbed and sanitized</li>
-          <li><span class="scope-check"></span>Stove/oven — top, grates, drip pans, interior, hood and filter</li>
-          <li><span class="scope-check"></span>Refrigerator — interior shelves, drawers, exterior, top</li>
-          <li><span class="scope-check"></span>Microwave — interior and exterior</li>
-          <li><span class="scope-check"></span>Dishwasher — interior wipe, edges, and exterior</li>
-          <li><span class="scope-check"></span>Sink scrubbed, faucet polished, disposal cleaned</li>
-          <li><span class="scope-check"></span>Floors swept, mopped, and baseboards wiped</li>
-          <li><span class="scope-check"></span>Light fixtures, switches, and outlets wiped</li>
+          <li>All cabinets cleaned inside and out</li>
+          <li>Countertops and backsplash scrubbed and sanitized</li>
+          <li>Stove/oven — top, grates, drip pans, interior, hood and filter</li>
+          <li>Refrigerator — interior shelves, drawers, exterior, top</li>
+          <li>Microwave — interior and exterior</li>
+          <li>Dishwasher — interior wipe, edges, and exterior</li>
+          <li>Sink scrubbed, faucet polished, disposal cleaned</li>
+          <li>Floors swept, mopped, and baseboards wiped</li>
+          <li>Light fixtures, switches, and outlets wiped</li>
         </ul>
       </div>
 
       <div class="scope-card">
         <h3>&#128705; Bathrooms</h3>
         <ul class="scope-list">
-          <li><span class="scope-check"></span>Tub/shower scrubbed, grout and tile detailed</li>
-          <li><span class="scope-check"></span>Shower doors cleaned and de-scaled</li>
-          <li><span class="scope-check"></span>Toilet — bowl, base, tank, and behind</li>
-          <li><span class="scope-check"></span>Vanity, sink, and mirror cleaned and polished</li>
-          <li><span class="scope-check"></span>Cabinets and medicine cabinet wiped inside/out</li>
-          <li><span class="scope-check"></span>Chrome fixtures polished, hardware wiped</li>
-          <li><span class="scope-check"></span>Exhaust fan and vent covers cleaned</li>
-          <li><span class="scope-check"></span>Floors scrubbed, baseboards wiped</li>
+          <li>Tub/shower scrubbed, grout and tile detailed</li>
+          <li>Shower doors cleaned and de-scaled</li>
+          <li>Toilet — bowl, base, tank, and behind</li>
+          <li>Vanity, sink, and mirror cleaned and polished</li>
+          <li>Cabinets and medicine cabinet wiped inside/out</li>
+          <li>Chrome fixtures polished, hardware wiped</li>
+          <li>Exhaust fan and vent covers cleaned</li>
+          <li>Floors scrubbed, baseboards wiped</li>
         </ul>
       </div>
 
       <div class="scope-card">
         <h3>&#128716; Bedrooms & Living Areas</h3>
         <ul class="scope-list">
-          <li><span class="scope-check"></span>All surfaces dusted — shelves, ledges, mantels</li>
-          <li><span class="scope-check"></span>Windowsills and window tracks cleaned</li>
-          <li><span class="scope-check"></span>Blinds dusted and wiped</li>
-          <li><span class="scope-check"></span>Baseboards wiped throughout</li>
-          <li><span class="scope-check"></span>Light fixtures, switches, and outlets cleaned</li>
-          <li><span class="scope-check"></span>Closets — shelves, rods, and floors</li>
-          <li><span class="scope-check"></span>Doors and door frames wiped</li>
-          <li><span class="scope-check"></span>Floors swept, mopped, or vacuumed</li>
-          <li><span class="scope-check"></span>Washer/dryer area cleaned (if applicable)</li>
+          <li>All surfaces dusted — shelves, ledges, mantels</li>
+          <li>Windowsills and window tracks cleaned</li>
+          <li>Blinds dusted and wiped</li>
+          <li>Baseboards wiped throughout</li>
+          <li>Light fixtures, switches, and outlets cleaned</li>
+          <li>Closets — shelves, rods, and floors</li>
+          <li>Doors and door frames wiped</li>
+          <li>Floors swept, mopped, or vacuumed</li>
+          <li>Washer/dryer area cleaned (if applicable)</li>
         </ul>
       </div>
 
       <div class="scope-card">
         <h3>&#128736; Additional Services</h3>
         <ul class="scope-list">
-          <li><span class="scope-check"></span>Re-cleans and touch-ups for failed inspections</li>
-          <li><span class="scope-check"></span>Excessive filth remediation (itemized surcharges)</li>
-          <li><span class="scope-check"></span>Rush and same-day turnover service</li>
-          <li><span class="scope-check"></span>Common area hallways and lobbies</li>
-          <li><span class="scope-check"></span>Stairwell cleaning</li>
-          <li><span class="scope-check"></span>Outdoor amenities — grill areas, pool furniture</li>
-          <li><span class="scope-check"></span>Maintenance office cleaning</li>
-          <li><span class="scope-check"></span>Recycling program support</li>
+          <li>Re-cleans and touch-ups for failed inspections</li>
+          <li>Excessive filth remediation (itemized surcharges)</li>
+          <li>Rush and same-day turnover service</li>
+          <li>Common area hallways and lobbies</li>
+          <li>Stairwell cleaning</li>
+          <li>Outdoor amenities — grill areas, pool furniture</li>
+          <li>Maintenance office cleaning</li>
+          <li>Recycling program support</li>
         </ul>
       </div>
     </div>
