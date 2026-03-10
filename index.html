@@ -147,7 +147,7 @@ header.scrolled{
 }
 .trusted-logo{
   font-family:'Playfair Display',serif;font-size:18px;font-weight:600;
-  color:var(--text-dark);opacity:.5;transition:opacity .3s;
+  color:var(--text-dark);opacity:.5;transition:opacity .3s;text-align:center;
 }
 .trusted-logo:hover{opacity:1}
 .trusted-logo span{display:block;font-family:'Inter',sans-serif;font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dark-muted);margin-top:2px}
@@ -341,7 +341,7 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
   margin-top:48px;padding-top:28px;
   border-top:1px solid rgba(255,255,255,.06);
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-  font-size:13px;color:rgba(255,255,255,.35);
+  font-size:13px;color:rgba(255,255,255,.35);text-align:center;
 }
 .footer-tagline{font-family:'Playfair Display',serif;font-style:italic;color:rgba(201,168,76,.5)}
 
@@ -353,7 +353,8 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
   .scope-grid{grid-template-columns:1fr}
   .testimonial-grid{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr 1fr}
-  .footer-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;text-align:center}
+  .footer-links{justify-items:center}
   .nav-links{display:none}
   .hamburger{display:block}
   .form-row{grid-template-columns:1fr}
@@ -366,9 +367,11 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
   .stat-number{font-size:36px}
   .service-grid{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
-  .trusted-logos{gap:20px;flex-direction:column}
+  .trusted-logos{gap:20px;flex-direction:column;align-items:center}
   .footer-bottom{flex-direction:column;text-align:center}
   .hero-content{padding:120px 0 60px}
+  .cta-banner h2{font-size:28px}
+  .cta-banner p{font-size:14px}
 }
 </style>
 </head>
