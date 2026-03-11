@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Oakland Cleaning Services | White Glove Property Care | Oakland County, MI</title>
-<meta name="description" content="Southeast Michigan's premier multifamily and commercial cleaning company. White glove apartment turnovers, amenity care, and property maintenance for Class A communities. Serving 30+ properties since 1996." />
-<meta name="keywords" content="luxury apartment cleaning Oakland County, premium multifamily cleaning Michigan, white glove apartment turnover, commercial cleaning Sterling Heights, property management cleaning" />
+<title>Oakland Cleaning Services | Premium Property Care | Oakland County, MI</title>
+<meta name="description" content="Southeast Michigan's premier multifamily and commercial cleaning company. Premium apartment turnovers, amenity care, and property maintenance for Class A communities. Serving 30+ properties since 1996." />
+<meta name="keywords" content="luxury apartment cleaning Oakland County, premium multifamily cleaning Michigan, premium apartment turnover, commercial cleaning Sterling Heights, property management cleaning" />
 <link rel="icon" href="logo.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
 :root{
   --black:#0a0a0f;
@@ -226,6 +227,9 @@ header.scrolled{
   transition:all .3s;
 }
 .area-tag:hover{border-color:var(--gold);color:var(--gold)}
+.area-map-wrap{border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.08)}
+#service-map{width:100%;height:480px}
+@media(max-width:600px){#service-map{height:340px}}
 
 /* TESTIMONIALS */
 .testimonials{
@@ -422,7 +426,7 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge">Est. 1996 &mdash; Oakland County, Michigan</div>
-      <h1>White Glove Property Care for <em>Exceptional</em> Communities</h1>
+      <h1>Premium Property Care for <em>Exceptional</em> Communities</h1>
       <p>Premium apartment turnover, amenity, and commercial cleaning trusted by Southeast Michigan's finest property management companies.</p>
       <div class="hero-actions">
         <a class="btn btn-gold" href="#quote">Schedule a Consultation</a>
@@ -455,7 +459,10 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
       <div class="trusted-logo">Dart Properties<span>Regional Partner</span></div>
       <div class="trusted-logo">Moceri Management<span>Auburn Hills</span></div>
       <div class="trusted-logo">Gallo Companies<span>Washington Twp</span></div>
-      <div class="trusted-logo">Chapman Group<span>Rochester Hills</span></div>
+      <div class="trusted-logo">Fox Creek Associates<span>Clarkston</span></div>
+      <div class="trusted-logo">Lombardo Homes<span>Washington Twp</span></div>
+      <div class="trusted-logo">Grace Management<span>Sterling Heights</span></div>
+      <div class="trusted-logo">R2M Realty<span>Sterling Heights</span></div>
     </div>
   </div>
 </div>
@@ -474,17 +481,17 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
       <article class="service-card reveal">
         <div class="service-card-inner">
           <span class="service-card-icon">&#127968;</span>
-          <h3>Apartment Turnovers</h3>
-          <p>Comprehensive move-in/move-out detailing for studios through townhomes. Every surface perfected from ceiling to floor — delivering units that exceed inspection standards.</p>
-          <span class="service-tag">White Glove Standard</span>
+          <h3>Premium Apartment Turnovers</h3>
+          <p>Full deep cleans of entire units to move-in ready condition — kitchen, bathrooms, bedrooms, living areas, and utility spaces. Studios through townhomes, every surface perfected.</p>
+          <span class="service-tag">Premium Service</span>
         </div>
       </article>
 
       <article class="service-card reveal">
         <div class="service-card-inner">
           <span class="service-card-icon">&#127963;</span>
-          <h3>Clubhouse & Leasing Office</h3>
-          <p>First impressions are everything. We maintain your community's signature spaces to the highest standard — clubhouses, leasing centers, and gathering areas always guest-ready.</p>
+          <h3>Clubhouse & Community Rooms</h3>
+          <p>Your community's signature gathering spaces maintained to the highest standard. Clubhouses and community rooms always guest-ready for events, tours, and resident life.</p>
           <span class="service-tag">Recurring Programs</span>
         </div>
       </article>
@@ -492,8 +499,8 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
       <article class="service-card reveal">
         <div class="service-card-inner">
           <span class="service-card-icon">&#128170;</span>
-          <h3>Fitness Center Care</h3>
-          <p>Thorough sanitization of equipment, mirrors, floors, and locker areas. Your amenity spaces maintained to the hygienic standards your residents expect.</p>
+          <h3>Fitness Center Cleaning</h3>
+          <p>Thorough sanitization of equipment, mirrors, floors, and locker areas. Your fitness amenities maintained to the hygienic standards your residents expect.</p>
           <span class="service-tag">Weekly / Bi-Weekly</span>
         </div>
       </article>
@@ -502,15 +509,42 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
         <div class="service-card-inner">
           <span class="service-card-icon">&#11088;</span>
           <h3>Model Unit Presentation</h3>
-          <p>Your model apartments and corporate suites maintained show-ready at all times. Ensuring every prospective resident experiences your property at its finest.</p>
+          <p>Model apartments maintained show-ready at all times. Ensuring every prospective resident experiences your property at its finest during tours and open houses.</p>
           <span class="service-tag">Always Tour-Ready</span>
         </div>
       </article>
 
       <article class="service-card reveal">
         <div class="service-card-inner">
+          <span class="service-card-icon">&#128203;</span>
+          <h3>Leasing Office Cleaning</h3>
+          <p>First impressions start at the front desk. We keep your leasing offices spotless and professional — from reception areas to private offices and restrooms.</p>
+          <span class="service-tag">Recurring Programs</span>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-card-inner">
+          <span class="service-card-icon">&#128682;</span>
+          <h3>Common Hallways & Stairwells</h3>
+          <p>Clean, well-maintained hallways and stairwells throughout your property. Floors, handrails, lighting, and entryways kept to a standard that reflects your community's quality.</p>
+          <span class="service-tag">Scheduled Service</span>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-card-inner">
+          <span class="service-card-icon">&#9728;&#65039;</span>
+          <h3>Pool House & Outdoor Amenities</h3>
+          <p>Pool houses, cabanas, grill areas, outdoor furniture, and amenity spaces kept clean and inviting for residents throughout the season.</p>
+          <span class="service-tag">Seasonal / Recurring</span>
+        </div>
+      </article>
+
+      <article class="service-card reveal">
+        <div class="service-card-inner">
           <span class="service-card-icon">&#127970;</span>
-          <h3>Office & Management Spaces</h3>
+          <h3>Corporate Offices</h3>
           <p>Professional maintenance of management offices, corporate spaces, and commercial buildings. Restrooms, common areas, and workspaces kept to executive standards.</p>
           <span class="service-tag">Tailored Plans</span>
         </div>
@@ -519,8 +553,8 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
       <article class="service-card reveal">
         <div class="service-card-inner">
           <span class="service-card-icon">&#128166;</span>
-          <h3>Exterior Restoration</h3>
-          <p>Professional-grade pressure washing to restore pool decks, building facades, walkways, and outdoor amenity areas. Preserve your property's curb appeal.</p>
+          <h3>Powerwashing</h3>
+          <p>Professional-grade pressure washing to restore pool decks, building facades, walkways, parking structures, and outdoor surfaces. Preserve your property's curb appeal.</p>
           <span class="service-tag">Seasonal / On-Demand</span>
         </div>
       </article>
@@ -534,7 +568,7 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
     <div class="section-head reveal">
       <span class="section-label" style="color:var(--gold-light)">The OCS Standard</span>
       <div class="gold-line"></div>
-      <h2>Our White Glove Turnover Checklist</h2>
+      <h2>Our Premium Turnover Checklist</h2>
       <p>Every unit follows our meticulous protocol. Nothing overlooked, nothing left to chance.</p>
     </div>
 
@@ -610,7 +644,11 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
       <p>Serving premier apartment communities and commercial properties across Oakland and Macomb Counties.</p>
     </div>
 
-    <div class="area-grid reveal">
+    <div class="area-map-wrap reveal">
+      <div id="service-map"></div>
+    </div>
+
+    <div class="area-grid reveal" style="margin-top:36px">
       <div class="area-tag">Auburn Hills</div>
       <div class="area-tag">Clarkston</div>
       <div class="area-tag">Clinton Twp</div>
@@ -676,18 +714,6 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
 
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"We switched to OCS two years ago and haven't looked back. They're responsive, flexible with scheduling, and the quality is consistent. When we have a last-minute turnover, they make it happen."</blockquote>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">CA</div>
-          <div class="testimonial-info">
-            <strong>Community Manager</strong>
-            <span>Chapman Apartments, Rochester Hills</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <blockquote>"OCS handles all of our apartment turnovers and fitness center cleaning. Their crews understand the unique needs of multifamily properties — it's not like cleaning a house. True professionals."</blockquote>
         <div class="testimonial-author">
           <div class="testimonial-avatar">TC</div>
@@ -706,6 +732,54 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
           <div class="testimonial-info">
             <strong>Community Director</strong>
             <span>Heron Springs Townhomes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"We have a high volume of turnovers and OCS keeps up without ever cutting corners. Their team knows our property inside and out — they don't need hand-holding. That kind of reliability is rare in this business."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">OH</div>
+          <div class="testimonial-info">
+            <strong>Property Manager</strong>
+            <span>Oak Hill Apartments, Shelby Twp</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"OCS cleans our office building weekly and the difference is night and day from our previous vendor. Restrooms, break rooms, lobbies — everything is spotless. They treat our space like it's their own."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">GC</div>
+          <div class="testimonial-info">
+            <strong>Office Manager</strong>
+            <span>Gallo Companies, Washington Twp</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"What I appreciate most about OCS is the communication. If something comes up during a clean — excessive filth, maintenance issues — they let us know right away. No surprises, no excuses, just results."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">HL</div>
+          <div class="testimonial-info">
+            <strong>Assistant Manager</strong>
+            <span>Hidden Lakes Apartments, Clarkston</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"We brought OCS on for our hallway and stairwell cleaning and quickly added turnovers. Their crews show up on time, in uniform, and the quality is the same every single visit. That consistency matters to us."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">WM</div>
+          <div class="testimonial-info">
+            <strong>Property Manager</strong>
+            <span>Woodland Meadows, Clinton Twp</span>
           </div>
         </div>
       </div>
@@ -792,12 +866,15 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
             <label for="service">Service Interest</label>
             <select id="service" name="service">
               <option value="">Select a service...</option>
-              <option>Apartment Turnover Program</option>
-              <option>Clubhouse & Leasing Office</option>
-              <option>Fitness Center Maintenance</option>
+              <option>Premium Apartment Turnovers</option>
+              <option>Clubhouse & Community Rooms</option>
+              <option>Fitness Center Cleaning</option>
               <option>Model Unit Presentation</option>
-              <option>Office & Commercial Spaces</option>
-              <option>Exterior Restoration</option>
+              <option>Leasing Office Cleaning</option>
+              <option>Common Hallways & Stairwells</option>
+              <option>Pool House & Outdoor Amenities</option>
+              <option>Corporate Offices</option>
+              <option>Powerwashing</option>
               <option>Comprehensive Property Program</option>
               <option>Other</option>
             </select>
@@ -845,18 +922,18 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
     <div class="footer-grid">
       <div>
         <h4>Oakland Cleaning Services, Inc.</h4>
-        <p>Southeast Michigan's premier multifamily and commercial cleaning company. Delivering white glove property care to Oakland County's finest communities since 1996.</p>
+        <p>Southeast Michigan's premier multifamily and commercial cleaning company. Delivering premium property care to Oakland County's finest communities since 1996.</p>
         <p style="margin-top:12px;color:rgba(255,255,255,.35)">P.O. Box 663, Lake Orion, MI 48361</p>
       </div>
       <div>
         <h4>Services</h4>
         <div class="footer-links">
           <a href="#services">Apartment Turnovers</a>
-          <a href="#services">Clubhouse & Leasing</a>
-          <a href="#services">Fitness Center Care</a>
-          <a href="#services">Model Unit Presentation</a>
-          <a href="#services">Office & Commercial</a>
-          <a href="#services">Exterior Restoration</a>
+          <a href="#services">Clubhouse & Community Rooms</a>
+          <a href="#services">Fitness Center Cleaning</a>
+          <a href="#services">Leasing Office & Corporate</a>
+          <a href="#services">Hallways & Stairwells</a>
+          <a href="#services">Powerwashing</a>
         </div>
       </div>
       <div>
@@ -879,6 +956,7 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
 <!-- SCRIPTS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 // Vanta.js 3D Fog Background
 if(window.VANTA){
@@ -914,6 +992,57 @@ const observer=new IntersectionObserver(function(entries){
   });
 },{threshold:.15});
 document.querySelectorAll(".reveal").forEach(function(el){observer.observe(el)});
+
+// Service Area Map
+if(window.L){
+  var map=L.map("service-map",{scrollWheelZoom:false,zoomControl:true}).setView([42.66,-83.10],11);
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    maxZoom:19
+  }).addTo(map);
+
+  // Service area boundary polygon
+  var boundary=[
+    [42.82,-83.30],[42.80,-83.18],[42.78,-83.08],[42.76,-82.98],
+    [42.72,-82.88],[42.68,-82.80],[42.62,-82.80],[42.56,-82.86],
+    [42.53,-82.94],[42.53,-83.06],[42.55,-83.16],[42.60,-83.24],
+    [42.65,-83.30],[42.70,-83.46],[42.76,-83.46],[42.82,-83.30]
+  ];
+  L.polygon(boundary,{
+    color:"#C9A84C",weight:3.5,opacity:.85,
+    fillColor:"#C9A84C",fillOpacity:.08,
+    dashArray:"",lineJoin:"round"
+  }).addTo(map);
+
+  // City labels
+  var cities=[
+    [42.6875,-83.2341,"Auburn Hills"],
+    [42.7356,-83.4191,"Clarkston"],
+    [42.5868,-82.9321,"Clinton Twp"],
+    [42.6661,-82.8454,"Chesterfield"],
+    [42.7845,-83.2449,"Lake Orion"],
+    [42.6806,-83.1338,"Rochester"],
+    [42.6584,-83.1499,"Rochester Hills"],
+    [42.6706,-83.0330,"Shelby Twp"],
+    [42.5803,-83.0302,"Sterling Heights"],
+    [42.7338,-83.0480,"Washington Twp"]
+  ];
+
+  cities.forEach(function(c){
+    var label=L.divIcon({
+      className:"city-label",
+      html:'<div style="font-family:Inter,sans-serif;font-size:11px;font-weight:600;color:#1a1a22;white-space:nowrap;text-shadow:1px 1px 3px #fff,-1px -1px 3px #fff,1px -1px 3px #fff,-1px 1px 3px #fff,0 0 8px #fff;letter-spacing:.3px">'+c[2]+'</div>',
+      iconSize:[0,0],iconAnchor:[-8,6]
+    });
+    var dot=L.divIcon({
+      className:"city-dot",
+      html:'<div style="width:8px;height:8px;background:#C9A84C;border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.25)"></div>',
+      iconSize:[8,8],iconAnchor:[4,4]
+    });
+    L.marker([c[0],c[1]],{icon:dot}).addTo(map);
+    L.marker([c[0],c[1]],{icon:label,interactive:false}).addTo(map);
+  });
+}
 </script>
 </body>
 </html>
