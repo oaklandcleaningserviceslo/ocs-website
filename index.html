@@ -75,6 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --charcoal:#141418;
   --dark:#1a1a22;
   --gold:#C9A84C;
+  --gold-dark:#8B6F2A;
   --gold-light:#e8d9a0;
   --cream:#faf8f2;
   --ivory:#f5f0e8;
@@ -118,7 +119,7 @@ img{max-width:100%;display:block}
 }
 .btn-outline-light:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
 .btn-outline-dark{
-  background:transparent;border:1.5px solid var(--gold);color:var(--gold);
+  background:transparent;border:1.5px solid var(--gold);color:var(--gold-dark);
 }
 .btn-outline-dark:hover{background:var(--gold);color:var(--black)}
 .btn-white{background:#fff;color:var(--black);box-shadow:0 4px 16px rgba(0,0,0,.1)}
@@ -126,7 +127,7 @@ img{max-width:100%;display:block}
 
 .section-label{
   display:inline-block;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
-  letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;
+  letter-spacing:3px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:12px;
 }
 .gold-line{
   width:60px;height:2px;background:var(--gold);margin:0 auto 16px;
@@ -236,7 +237,7 @@ header.scrolled{
 .service-tag{
   display:inline-block;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
   padding:6px 14px;border-radius:999px;letter-spacing:.5px;text-transform:uppercase;
-  background:rgba(201,168,76,.1);color:var(--gold);border:1px solid rgba(201,168,76,.2);
+  background:rgba(201,168,76,.1);color:var(--gold-dark);border:1px solid rgba(201,168,76,.2);
 }
 
 /* SCOPE OF WORK */
@@ -287,7 +288,7 @@ header.scrolled{
   font-weight:500;font-size:14px;color:var(--text-dark);
   transition:all .3s;
 }
-.area-tag:hover{border-color:var(--gold);color:var(--gold)}
+.area-tag:hover{border-color:var(--gold);color:var(--gold-dark)}
 .area-map-wrap{border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.08)}
 #service-map{width:100%;height:480px}
 @media(max-width:600px){#service-map{height:340px}}
@@ -344,6 +345,21 @@ header.scrolled{
 }
 .why-card h4{font-size:18px;margin-bottom:10px;color:var(--text-dark)}
 .why-card p{color:var(--text-dark-muted);font-size:13px;line-height:1.6}
+
+/* ABOUT / STORY */
+.about{padding:100px 0;background:var(--charcoal);color:#fff;position:relative;overflow:hidden}
+.about::before{
+  content:'';position:absolute;bottom:-100px;right:-100px;width:500px;height:500px;
+  border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06),transparent 60%);pointer-events:none;
+}
+.about-inner{max-width:720px;margin:0 auto;position:relative;z-index:2}
+.about-inner p{color:rgba(255,255,255,.7);font-size:16px;line-height:1.8;margin-bottom:20px}
+.about-inner p:last-of-type{margin-bottom:0}
+.about-signature{
+  margin-top:32px;padding-top:24px;border-top:1px solid rgba(201,168,76,.2);
+  font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);font-style:italic;
+}
+.about-signature span{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:13px;color:rgba(255,255,255,.4);margin-top:4px;letter-spacing:.5px}
 
 /* QUOTE SECTION */
 .quote-section{padding:100px 0;background:var(--cream)}
@@ -466,6 +482,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="#services">Services</a></li>
       <li><a href="#scope">Scope of Work</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#story">Our Story</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
@@ -481,6 +498,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="#services" onclick="this.parentElement.classList.remove('active')">Services</a>
   <a href="#scope" onclick="this.parentElement.classList.remove('active')">Scope of Work</a>
   <a href="#testimonials" onclick="this.parentElement.classList.remove('active')">Testimonials</a>
+  <a href="#story" onclick="this.parentElement.classList.remove('active')">Our Story</a>
   <a href="#contact" onclick="this.parentElement.classList.remove('active')">Contact</a>
   <a href="#quote" onclick="this.parentElement.classList.remove('active')">Request a Quote</a>
 </div>
@@ -775,6 +793,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="why-icon">&#127942;</div>
         <h4>30 Years of Excellence</h4>
         <p>Serving Oakland County's finest communities since 1996 with unwavering quality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / OUR STORY -->
+<section class="about" id="story">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;margin-bottom:48px">
+      <span class="section-label" style="color:var(--gold-light)">Our Story</span>
+      <div class="gold-line"></div>
+      <h2>Built from the Ground Up</h2>
+    </div>
+
+    <div class="about-inner reveal">
+      <p>John Lanzetta grew up in Milford, Michigan. After graduating from Milford High School, he knew one thing for certain — he was going to build something to support his family. He made flyers, knocked on doors, and landed his first account at Hidden Lakes Apartments in Clarkston. It was just John and one other guy.</p>
+
+      <p>That was years before OCS was officially incorporated in 1996. Those early years were about learning the trade from the inside — understanding what property managers actually need, not what a sales pitch promises. Every unit cleaned, every callback handled, every relationship built one handshake at a time.</p>
+
+      <p>Three decades later, Oakland Cleaning Services is still family-owned and hands-on. John still walks properties. He still knows the maintenance techs, the leasing agents, and the porters by name — not just the managers. That's the difference between a vendor and a partner.</p>
+
+      <p>OCS has grown from one apartment complex to over 30 properties across Oakland and Macomb Counties, but the approach hasn't changed: show up, do the work right, and treat every property like your reputation depends on it — because it does.</p>
+
+      <div class="about-signature">
+        John Lanzetta
+        <span>Founder & Owner, Oakland Cleaning Services, Inc.</span>
       </div>
     </div>
   </div>
