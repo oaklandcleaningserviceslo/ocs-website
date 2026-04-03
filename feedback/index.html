@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Share Your Experience | Oakland Cleaning Services</title>
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --black:#0a0a0f;
+  --charcoal:#141418;
+  --dark:#1a1a22;
+  --gold:#C9A84C;
+  --gold-dark:#8B6F2A;
+  --gold-light:#e8d9a0;
+  --cream:#faf8f2;
+  --text-light:rgba(255,255,255,.9);
+  --text-muted:rgba(255,255,255,.55);
+  --border-light:rgba(201,168,76,.15);
+  --border-dark:rgba(255,255,255,.08);
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',ui-sans-serif,system-ui,-apple-system,sans-serif;
+  color:var(--text-light);background:var(--black);
+  line-height:1.7;font-weight:400;
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 20px;
+}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.15}
+
+/* LOGO */
+.logo-wrap{margin-bottom:32px;text-align:center}
+.logo-wrap img{height:60px;margin:0 auto}
+
+/* HEADER TEXT */
+.page-header{text-align:center;margin-bottom:40px}
+.page-header h1{font-size:32px;margin-bottom:12px;color:#fff}
+.page-header p{color:var(--text-muted);font-size:16px;max-width:480px;margin:0 auto}
+
+/* FORM CARD */
+.feedback-card{
+  width:100%;max-width:580px;
+  background:var(--charcoal);
+  border:1px solid var(--border-light);
+  border-radius:var(--radius);
+  padding:44px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+/* FORM ELEMENTS */
+.form-grid{display:grid;gap:20px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group label{
+  display:block;font-size:11px;font-weight:600;color:var(--text-muted);
+  margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;
+}
+.form-group input,.form-group textarea{
+  width:100%;border-radius:8px;
+  border:1.5px solid rgba(255,255,255,.1);
+  padding:14px 16px;font:inherit;font-size:15px;
+  background:rgba(255,255,255,.04);color:#fff;outline:none;
+  transition:border-color .3s,box-shadow .3s;
+}
+.form-group input:focus,.form-group textarea:focus{
+  border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.15);
+}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.25)}
+.form-group textarea{resize:vertical;min-height:120px}
+
+/* STAR RATING */
+.star-rating-group label.star-label{
+  font-size:11px;font-weight:600;color:var(--text-muted);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:block;
+}
+.stars{display:flex;gap:6px;cursor:pointer}
+.stars .star{
+  font-size:32px;color:rgba(255,255,255,.15);
+  transition:color .2s,transform .15s;
+  user-select:none;line-height:1;
+}
+.stars .star:hover,.stars .star.active{color:var(--gold)}
+.stars .star:hover{transform:scale(1.15)}
+
+/* CHECKBOX */
+.checkbox-group{display:flex;align-items:flex-start;gap:12px}
+.checkbox-group input[type="checkbox"]{
+  width:20px;height:20px;margin-top:2px;flex-shrink:0;
+  accent-color:var(--gold);cursor:pointer;
+}
+.checkbox-group label{
+  font-size:13px;color:rgba(255,255,255,.7);cursor:pointer;
+  text-transform:none;letter-spacing:0;font-weight:400;
+}
+
+/* SUBMIT BUTTON */
+.btn-submit{
+  display:block;width:100%;
+  padding:16px 36px;border-radius:8px;font-weight:600;font-size:14px;
+  font-family:'Inter',sans-serif;letter-spacing:.5px;text-transform:uppercase;
+  border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--gold),#d4b65e);
+  color:var(--black);box-shadow:0 8px 24px rgba(201,168,76,.3);
+  transition:all .25s ease;
+}
+.btn-submit:hover{box-shadow:0 12px 32px rgba(201,168,76,.45);transform:translateY(-2px)}
+
+/* THANK YOU */
+.thank-you{
+  text-align:center;
+  width:100%;max-width:580px;
+}
+.thank-you h2{font-size:36px;margin-bottom:16px;color:#fff}
+.thank-you p{color:var(--text-muted);font-size:16px;margin-bottom:8px}
+.thank-you .redirect-note{font-size:13px;color:rgba(255,255,255,.3);margin-top:24px}
+
+.hidden{display:none}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  body{padding:24px 16px}
+  .feedback-card{padding:28px 20px}
+  .form-row{grid-template-columns:1fr}
+  .page-header h1{font-size:26px}
+  .thank-you h2{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- FORM VIEW -->
+<div id="form-view">
+  <div class="logo-wrap">
+    <img src="../logo.png" alt="Oakland Cleaning Services" />
+  </div>
+
+  <div class="page-header">
+    <h1>Share Your Experience</h1>
+    <p>Your feedback helps us continue delivering the quality service your property deserves.</p>
+  </div>
+
+  <div class="feedback-card">
+    <form id="feedback-form" class="form-grid" action="https://formsubmit.co/oaklandcleaningserviceslo@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Client Testimonial - OCS Website" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" id="next-url" value="https://ocslakeorion.com/feedback/?thanks=1" />
+      <input type="text" name="_honey" style="display:none" />
+      <input type="hidden" name="rating" id="rating-value" value="" />
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input id="name" name="name" type="text" placeholder="Full name" required />
+        </div>
+        <div class="form-group">
+          <label for="title">Title / Role</label>
+          <input id="title" name="title" type="text" placeholder="e.g. Property Manager" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company or Property</label>
+        <input id="company" name="company" type="text" placeholder="Management company or property name" />
+      </div>
+
+      <div class="star-rating-group">
+        <label class="star-label">Rating</label>
+        <div class="stars" id="star-container">
+          <span class="star" data-value="1">&#9733;</span>
+          <span class="star" data-value="2">&#9733;</span>
+          <span class="star" data-value="3">&#9733;</span>
+          <span class="star" data-value="4">&#9733;</span>
+          <span class="star" data-value="5">&#9733;</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="experience">Your Experience</label>
+        <textarea id="experience" name="experience" placeholder="What's been your experience working with Oakland Cleaning Services? Feel free to mention reliability, quality, communication, or anything that stands out." required></textarea>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="permission" name="permission" value="Yes" required />
+        <label for="permission">I give Oakland Cleaning Services permission to use this testimonial on their website.</label>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit Your Review</button>
+    </form>
+  </div>
+</div>
+
+<!-- THANK YOU VIEW -->
+<div id="thank-you-view" class="thank-you hidden">
+  <div class="logo-wrap">
+    <img src="../logo.png" alt="Oakland Cleaning Services" />
+  </div>
+  <h2 id="thank-you-heading">Thank you.</h2>
+  <p>We appreciate your trust in Oakland Cleaning Services.</p>
+  <p class="redirect-note">Redirecting you now&hellip;</p>
+</div>
+
+<script>
+(function() {
+  const params = new URLSearchParams(window.location.search);
+
+  // THANK-YOU MODE
+  if (params.get('thanks') === '1') {
+    document.getElementById('form-view').classList.add('hidden');
+    var tyView = document.getElementById('thank-you-view');
+    tyView.classList.remove('hidden');
+
+    var name = params.get('name');
+    if (name) {
+      document.getElementById('thank-you-heading').textContent = 'Thank you, ' + name + '.';
+    }
+
+    setTimeout(function() {
+      window.location.href = 'https://ocslakeorion.com';
+    }, 4000);
+    return;
+  }
+
+  // PRE-FILL FROM URL PARAMS
+  ['name', 'title', 'company'].forEach(function(field) {
+    var val = params.get(field);
+    if (val) document.getElementById(field).value = val;
+  });
+
+  // STAR RATING
+  var stars = document.querySelectorAll('#star-container .star');
+  var ratingInput = document.getElementById('rating-value');
+  var currentRating = 0;
+
+  stars.forEach(function(star) {
+    star.addEventListener('click', function() {
+      currentRating = parseInt(this.getAttribute('data-value'));
+      ratingInput.value = currentRating;
+      stars.forEach(function(s) {
+        s.classList.toggle('active', parseInt(s.getAttribute('data-value')) <= currentRating);
+      });
+    });
+
+    star.addEventListener('mouseenter', function() {
+      var hoverVal = parseInt(this.getAttribute('data-value'));
+      stars.forEach(function(s) {
+        s.style.color = parseInt(s.getAttribute('data-value')) <= hoverVal ? 'var(--gold)' : '';
+      });
+    });
+  });
+
+  document.getElementById('star-container').addEventListener('mouseleave', function() {
+    stars.forEach(function(s) {
+      s.style.color = '';
+    });
+  });
+
+  // APPEND NAME TO REDIRECT URL ON SUBMIT
+  document.getElementById('feedback-form').addEventListener('submit', function() {
+    var nameVal = document.getElementById('name').value.trim();
+    var firstName = nameVal.split(' ')[0];
+    if (firstName) {
+      document.getElementById('next-url').value =
+        'https://ocslakeorion.com/feedback/?thanks=1&name=' + encodeURIComponent(firstName);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
