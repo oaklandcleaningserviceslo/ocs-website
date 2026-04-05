@@ -25,13 +25,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Open Graph -->
 <meta property="og:title" content="Oakland Cleaning Services | Oakland County, MI" />
 <meta property="og:description" content="Apartment turnovers, amenity cleaning, and commercial property care for property managers across Oakland & Macomb Counties." />
-<meta property="og:image" content="https://ocslakeorion.com/logo.png" />
+<meta property="og:image" content="https://ocslakeorion.com/og-image.png" />
 <meta property="og:url" content="https://ocslakeorion.com" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Oakland Cleaning Services | Oakland County, MI" />
 <meta name="twitter:description" content="Apartment turnovers, amenity cleaning, and commercial property care for property managers across Oakland & Macomb Counties." />
-<meta name="twitter:image" content="https://ocslakeorion.com/logo.png" />
+<meta name="twitter:image" content="https://ocslakeorion.com/og-image.png" />
 <link rel="canonical" href="https://ocslakeorion.com/" />
 
 <!-- Structured Data -->
@@ -97,7 +97,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --charcoal:#141418;
   --dark:#1a1a22;
   --gold:#C9A84C;
-  --gold-dark:#8B6F2A;
+  --gold-dark:#7A601E;
   --gold-light:#e8d9a0;
   --cream:#faf8f2;
   --ivory:#f5f0e8;
@@ -314,7 +314,7 @@ header.scrolled{
   padding:12px 24px;border-radius:999px;
   background:#fff;border:1px solid rgba(0,0,0,.08);
   font-weight:500;font-size:14px;color:var(--text-dark);
-  transition:all .3s;
+  transition:all .3s;text-decoration:none;display:inline-block;
 }
 .area-tag:hover{border-color:var(--gold);color:var(--gold-dark)}
 .area-map-wrap{border-radius:var(--radius);overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.1);border:1px solid rgba(0,0,0,.08)}
@@ -755,20 +755,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="area-map-wrap reveal">
-      <div id="service-map"></div>
+      <div id="service-map" role="img" aria-label="Map showing Oakland Cleaning Services coverage area across Oakland and Macomb counties"></div>
     </div>
 
     <div class="area-grid reveal" style="margin-top:36px">
-      <div class="area-tag">Auburn Hills</div>
-      <div class="area-tag">Clarkston</div>
-      <div class="area-tag">Clinton Twp</div>
-      <div class="area-tag">Chesterfield</div>
-      <div class="area-tag">Lake Orion</div>
-      <div class="area-tag">Rochester</div>
-      <div class="area-tag">Rochester Hills</div>
-      <div class="area-tag">Shelby Twp</div>
-      <div class="area-tag">Sterling Heights</div>
-      <div class="area-tag">Washington Twp</div>
+      <a class="area-tag" href="/auburn-hills/">Auburn Hills</a>
+      <a class="area-tag" href="/clarkston/">Clarkston</a>
+      <a class="area-tag" href="/clinton-twp/">Clinton Twp</a>
+      <a class="area-tag" href="/chesterfield/">Chesterfield</a>
+      <a class="area-tag" href="/lake-orion/">Lake Orion</a>
+      <a class="area-tag" href="/rochester-hills/">Rochester</a>
+      <a class="area-tag" href="/rochester-hills/">Rochester Hills</a>
+      <a class="area-tag" href="/shelby-twp/">Shelby Twp</a>
+      <a class="area-tag" href="/sterling-heights/">Sterling Heights</a>
+      <a class="area-tag" href="/washington-twp/">Washington Twp</a>
       <div class="area-tag">Oakland County</div>
       <div class="area-tag">Macomb County</div>
     </div>
@@ -1087,6 +1087,7 @@ if(window.L){
     L.marker([c[0],c[1]],{icon:dot}).addTo(map);
     L.marker([c[0],c[1]],{icon:label,interactive:false}).addTo(map);
   });
+  var tp=document.querySelector('.leaflet-tile-pane');if(tp)tp.setAttribute('aria-hidden','true');
 }
 </script>
 </body>
