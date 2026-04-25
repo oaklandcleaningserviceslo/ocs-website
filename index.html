@@ -93,14 +93,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
 :root{
-  --black:#0a0a0f;
-  --charcoal:#141418;
+  --black:#13131a;
+  --charcoal:#1a1a23;
   --dark:#1a1a22;
   --gold:#C9A84C;
   --gold-dark:#7A601E;
   --gold-light:#e8d9a0;
-  --cream:#faf8f2;
-  --ivory:#f5f0e8;
+  --cream:#faf2e5;
+  --ivory:#f3ebd8;
   --text-light:rgba(255,255,255,.9);
   --text-muted:rgba(255,255,255,.55);
   --text-dark:#1a1a22;
@@ -192,7 +192,7 @@ header.scrolled{
 #vanta-bg{position:absolute;inset:0;z-index:1}
 .hero-overlay{
   position:absolute;inset:0;z-index:2;
-  background:linear-gradient(180deg,rgba(10,10,15,.3) 0%,rgba(10,10,15,.6) 100%);
+  background:linear-gradient(180deg,rgba(19,19,26,.12) 0%,rgba(19,19,26,.45) 100%);
 }
 .hero-content{position:relative;z-index:3;text-align:center;max-width:800px;margin:0 auto;padding:120px 0 80px}
 .hero-badge{
@@ -203,14 +203,25 @@ header.scrolled{
   letter-spacing:2px;text-transform:uppercase;color:var(--gold);
   margin-bottom:32px;
 }
-.hero h1{font-size:64px;line-height:1.05;letter-spacing:-1px;margin-bottom:24px;font-weight:700}
-.hero h1 em{font-style:italic;color:var(--gold)}
+.hero h1{font-size:64px;line-height:1.18;letter-spacing:-1px;margin-bottom:24px;font-weight:700;padding:0.05em 0}
+.hero h1 em{
+  font-style:italic;
+  background:linear-gradient(90deg,var(--gold) 0%,#f0d77a 50%,var(--gold) 100%);
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:emShimmer 5s ease-in-out infinite;
+  display:inline-block;
+  padding:0.05em 0.2em 0.05em 0.06em;
+  margin:0 -0.12em;
+}
+@keyframes emShimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 .hero p{font-size:18px;color:rgba(255,255,255,.7);max-width:560px;margin:0 auto 40px;line-height:1.7;font-weight:300}
 .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
 .hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;max-width:750px;margin:0 auto;text-align:center}
 .stat{padding:0 28px}
 .stat:not(:last-child){border-right:1px solid rgba(201,168,76,.25)}
-.stat-number{display:block;font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--gold);line-height:1.2}
+.stat-number{display:block;font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--gold);line-height:1.2;font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
 .stat-label{display:block;font-family:'Inter',sans-serif;font-size:11px;color:rgba(255,255,255,.5);font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px}
 
 /* TRUSTED BY */
@@ -488,6 +499,138 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
   .cta-banner p{font-size:14px}
   .quote-box{padding:24px}
 }
+
+/* ========== TIER 1 VISUAL UPGRADES ========== */
+
+/* 1. Editorial section numbering */
+.section-label[data-num]::before{
+  content:attr(data-num);
+  display:inline-block;
+  margin-right:14px;
+  color:currentColor;
+  opacity:.5;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-weight:400;
+  letter-spacing:0;
+  text-transform:none;
+  font-size:13px;
+}
+
+/* 2. Marquee logo strip */
+.marquee{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
+  padding:4px 0;
+}
+.marquee-track{
+  display:flex;
+  gap:20px;
+  width:max-content;
+  animation:marqueeScroll 50s linear infinite;
+}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 10px))}}
+
+/* 3. Sticky mobile CTA bar */
+.mobile-cta-bar{display:none}
+@media(max-width:768px){
+  .mobile-cta-bar{
+    display:flex;
+    position:fixed;
+    bottom:0;left:0;right:0;
+    z-index:200;
+    background:rgba(10,10,15,.96);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border-top:1px solid rgba(201,168,76,.18);
+    box-shadow:0 -4px 24px rgba(0,0,0,.25);
+  }
+  .mobile-cta-item{
+    flex:1;
+    padding:12px 6px;
+    text-align:center;
+    color:rgba(255,255,255,.85);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    border-right:1px solid rgba(255,255,255,.06);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    transition:background .25s ease;
+  }
+  .mobile-cta-item svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .mobile-cta-item:last-child{
+    border-right:none;
+    background:linear-gradient(135deg,var(--gold),#d4b65e);
+    color:var(--black);
+  }
+  .mobile-cta-item:active{background:rgba(201,168,76,.15)}
+  .mobile-cta-item:last-child:active{background:linear-gradient(135deg,#b8972d,#c9a84c)}
+  body{padding-bottom:64px}
+}
+
+/* 4. Scroll progress indicator */
+.scroll-progress{
+  position:fixed;
+  top:0;left:0;
+  height:2px;
+  width:0%;
+  background:linear-gradient(90deg,var(--gold),#f0d77a);
+  z-index:1000;
+  pointer-events:none;
+  transition:width .08s linear;
+  box-shadow:0 0 8px rgba(201,168,76,.4);
+}
+
+/* 5. Film grain overlay (subtle, global) */
+.grain-overlay{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9;
+  opacity:.05;
+  mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* 6. 3D card tilt support */
+.service-card,.scope-card,.why-card{
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+
+/* 7. Map city pin with pulse */
+.city-pin{position:relative;width:8px;height:8px}
+.city-pin-dot{
+  position:absolute;inset:0;
+  background:#C9A84C;
+  border:2px solid #fff;
+  border-radius:50%;
+  box-shadow:0 1px 4px rgba(0,0,0,.25);
+  z-index:2;
+}
+.city-pin-pulse{
+  position:absolute;inset:-2px;
+  border:2px solid #C9A84C;
+  border-radius:50%;
+  opacity:0;
+  z-index:1;
+  animation:cityPulse 2.6s ease-out infinite;
+}
+@keyframes cityPulse{
+  0%{transform:scale(0.8);opacity:.7}
+  100%{transform:scale(2.6);opacity:0}
+}
+
+/* 8. Service area polygon fade-in */
+.leaflet-overlay-pane svg path{
+  transition:stroke-opacity 1.6s ease,fill-opacity 1.6s ease,stroke-width 1.2s ease;
+}
 </style>
 </head>
 <body>
@@ -495,6 +638,10 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PWX5HG2K"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
+<!-- Scroll progress + grain overlay -->
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="grain-overlay" aria-hidden="true"></div>
 
 <!-- HEADER -->
 <header>
@@ -548,15 +695,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-number">30+</span>
+          <span class="stat-number" data-target="30" data-suffix="+">0+</span>
           <span class="stat-label">Properties Served</span>
         </div>
         <div class="stat">
-          <span class="stat-number">30</span>
+          <span class="stat-number" data-target="30">0</span>
           <span class="stat-label">Years of Excellence</span>
         </div>
         <div class="stat">
-          <span class="stat-number">5,000+</span>
+          <span class="stat-number" data-target="5000" data-suffix="+" data-comma="true">0+</span>
           <span class="stat-label">Units Annually</span>
         </div>
       </div>
@@ -568,15 +715,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="trusted reveal">
   <div class="container">
     <div class="trusted-label">Trusted by leading management companies</div>
-    <div class="trusted-logos">
-      <div class="trusted-logo">Greystar<span>National Partner</span></div>
-      <div class="trusted-logo">Dart Properties<span>Regional Partner</span></div>
-      <div class="trusted-logo">Moceri Management<span>Auburn Hills</span></div>
-      <div class="trusted-logo">Gallo Companies<span>Washington Twp</span></div>
-      <div class="trusted-logo">Fox Creek Associates<span>Clarkston</span></div>
-      <div class="trusted-logo">Lombardo Homes<span>Washington Twp</span></div>
-      <div class="trusted-logo">Grace Management<span>Sterling Heights</span></div>
-      <div class="trusted-logo">R2M Realty<span>Sterling Heights</span></div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <div class="trusted-logo">Greystar<span>National Partner</span></div>
+        <div class="trusted-logo">Dart Properties<span>Regional Partner</span></div>
+        <div class="trusted-logo">Moceri Management<span>Auburn Hills</span></div>
+        <div class="trusted-logo">Gallo Companies<span>Washington Twp</span></div>
+        <div class="trusted-logo">Fox Creek Associates<span>Clarkston</span></div>
+        <div class="trusted-logo">Lombardo Homes<span>Washington Twp</span></div>
+        <div class="trusted-logo">Grace Management<span>Sterling Heights</span></div>
+        <div class="trusted-logo">R2M Realty<span>Sterling Heights</span></div>
+        <div class="trusted-logo" aria-hidden="true">Greystar<span>National Partner</span></div>
+        <div class="trusted-logo" aria-hidden="true">Dart Properties<span>Regional Partner</span></div>
+        <div class="trusted-logo" aria-hidden="true">Moceri Management<span>Auburn Hills</span></div>
+        <div class="trusted-logo" aria-hidden="true">Gallo Companies<span>Washington Twp</span></div>
+        <div class="trusted-logo" aria-hidden="true">Fox Creek Associates<span>Clarkston</span></div>
+        <div class="trusted-logo" aria-hidden="true">Lombardo Homes<span>Washington Twp</span></div>
+        <div class="trusted-logo" aria-hidden="true">Grace Management<span>Sterling Heights</span></div>
+        <div class="trusted-logo" aria-hidden="true">R2M Realty<span>Sterling Heights</span></div>
+      </div>
     </div>
   </div>
 </div>
@@ -585,7 +742,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="services" id="services">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-label">Our Services</span>
+      <span class="section-label" data-num="01">Our Services</span>
       <div class="gold-line"></div>
       <h2>Elevated Cleaning for Elevated Properties</h2>
       <p>Meticulous care for every space in your community, delivered with precision and consistency.</p>
@@ -680,7 +837,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="scope" id="scope">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-label" style="color:var(--gold-light)">The OCS Standard</span>
+      <span class="section-label" data-num="02" style="color:var(--gold-light)">The OCS Standard</span>
       <div class="gold-line"></div>
       <h2>Our Premium Turnover Checklist</h2>
       <p>Every unit follows our meticulous protocol. Nothing overlooked, nothing left to chance.</p>
@@ -748,7 +905,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="area" id="area">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-label">Where We Serve</span>
+      <span class="section-label" data-num="03">Where We Serve</span>
       <div class="gold-line"></div>
       <h2>Southeast Michigan Coverage</h2>
       <p>Serving premier apartment communities and commercial properties across Oakland and Macomb Counties.</p>
@@ -778,7 +935,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="testimonials" id="testimonials">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-label">Client Testimonials</span>
+      <span class="section-label" data-num="04">Client Testimonials</span>
       <div class="gold-line"></div>
       <h2>Trusted by Michigan's Finest Communities</h2>
       <p>Long-term partnerships built on consistent results and exceptional service.</p>
@@ -795,7 +952,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="why" id="about">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-label">The OCS Difference</span>
+      <span class="section-label" data-num="05">The OCS Difference</span>
       <div class="gold-line"></div>
       <h2>Why Property Managers Choose Us</h2>
       <p>Three decades of specialized expertise in multifamily property care.</p>
@@ -830,7 +987,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="about" id="story">
   <div class="container">
     <div class="section-head reveal" style="text-align:center;margin-bottom:48px">
-      <span class="section-label" style="color:var(--gold-light)">Our Story</span>
+      <span class="section-label" data-num="06" style="color:var(--gold-light)">Our Story</span>
       <div class="gold-line"></div>
       <h2>Built from the Ground Up</h2>
     </div>
@@ -856,7 +1013,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="quote-section" id="quote">
   <div class="container">
     <div class="section-head reveal">
-      <span class="section-label">Get Started</span>
+      <span class="section-label" data-num="07">Get Started</span>
       <div class="gold-line"></div>
       <h2>Request a Consultation</h2>
       <p>Tell us about your property and we'll provide a customized care plan and quote.</p>
@@ -997,6 +1154,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
+<!-- Sticky mobile CTA bar -->
+<div class="mobile-cta-bar" aria-label="Quick contact">
+  <a href="tel:+12483432232" class="mobile-cta-item">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="sms:+12483432232" class="mobile-cta-item">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    Text
+  </a>
+  <a href="#quote" class="mobile-cta-item">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+    Quote
+  </a>
+</div>
+
 <!-- SCRIPTS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js"></script>
@@ -1011,13 +1184,13 @@ if(window.VANTA){
     gyroControls:false,
     minHeight:200,
     minWidth:200,
-    highlightColor:0x1a1a22,
-    midtoneColor:0x0a0a0f,
-    lowlightColor:0x0a0a0f,
-    baseColor:0x0a0a0f,
-    blurFactor:.4,
-    speed:.8,
-    zoom:.6
+    highlightColor:0x3c3650,
+    midtoneColor:0x1d1d28,
+    lowlightColor:0x13131a,
+    baseColor:0x13131a,
+    blurFactor:.62,
+    speed:.85,
+    zoom:.65
   });
 }
 
@@ -1045,18 +1218,33 @@ if(window.L){
     maxZoom:19
   }).addTo(map);
 
-  // Service area boundary polygon
+  // Service area boundary polygon (starts invisible, fades in on scroll)
   var boundary=[
     [42.82,-83.30],[42.80,-83.18],[42.78,-83.08],[42.76,-82.98],
     [42.72,-82.88],[42.68,-82.80],[42.62,-82.80],[42.56,-82.86],
     [42.53,-82.94],[42.53,-83.06],[42.55,-83.16],[42.60,-83.24],
     [42.65,-83.30],[42.70,-83.46],[42.76,-83.46],[42.82,-83.30]
   ];
-  L.polygon(boundary,{
-    color:"#C9A84C",weight:3.5,opacity:.85,
-    fillColor:"#C9A84C",fillOpacity:.08,
-    dashArray:"",lineJoin:"round"
+  var servicePoly=L.polygon(boundary,{
+    color:"#C9A84C",weight:0,opacity:0,
+    fillColor:"#C9A84C",fillOpacity:0,
+    dashArray:"",lineJoin:"round",className:"service-poly"
   }).addTo(map);
+  // Fade polygon in when map enters viewport
+  var mapEl=document.getElementById('service-map');
+  if(mapEl && 'IntersectionObserver' in window){
+    var polyObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          servicePoly.setStyle({weight:3.5,opacity:.85,fillOpacity:.08});
+          polyObs.unobserve(mapEl);
+        }
+      });
+    },{threshold:.25});
+    polyObs.observe(mapEl);
+  } else {
+    servicePoly.setStyle({weight:3.5,opacity:.85,fillOpacity:.08});
+  }
 
   // City labels
   var cities=[
@@ -1078,9 +1266,10 @@ if(window.L){
       html:'<div style="font-family:Inter,sans-serif;font-size:11px;font-weight:600;color:#1a1a22;white-space:nowrap;text-shadow:1px 1px 3px #fff,-1px -1px 3px #fff,1px -1px 3px #fff,-1px 1px 3px #fff,0 0 8px #fff;letter-spacing:.3px">'+c[2]+'</div>',
       iconSize:[0,0],iconAnchor:[-8,6]
     });
+    var pulseDelay=(Math.random()*2.4).toFixed(2);
     var dot=L.divIcon({
       className:"city-dot",
-      html:'<div style="width:8px;height:8px;background:#C9A84C;border:2px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.25)"></div>',
+      html:'<div class="city-pin"><span class="city-pin-pulse" style="animation-delay:'+pulseDelay+'s"></span><span class="city-pin-dot"></span></div>',
       iconSize:[8,8],iconAnchor:[4,4]
     });
     L.marker([c[0],c[1]],{icon:dot}).addTo(map);
@@ -1088,6 +1277,110 @@ if(window.L){
   });
   var tp=document.querySelector('.leaflet-tile-pane');if(tp)tp.setAttribute('aria-hidden','true');
 }
+
+/* ========== TIER 1 VISUAL UPGRADES ========== */
+
+// Scroll progress indicator
+(function(){
+  var bar=document.getElementById('scrollProgress');
+  if(!bar) return;
+  function update(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var pct=max>0?(h.scrollTop/max)*100:0;
+    bar.style.width=pct+'%';
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
+
+// Animated count-up on hero stats
+(function(){
+  function animate(el){
+    var target=parseInt(el.dataset.target,10);
+    if(isNaN(target)) return;
+    var suffix=el.dataset.suffix||'';
+    var useComma=el.dataset.comma==='true';
+    var duration=5000;
+    var start=null;
+    var lastUpdate=0;
+    var lastVal=-1;
+    function tick(now){
+      if(!start) start=now;
+      var t=Math.min((now-start)/duration,1);
+      var eased=1-Math.pow(1-t,2);
+      var val=Math.floor(target*eased);
+      if((now-lastUpdate>=45 && val!==lastVal) || t===1){
+        var display=useComma?val.toLocaleString():val.toString();
+        el.textContent=display+suffix;
+        lastUpdate=now;
+        lastVal=val;
+      }
+      if(t<1) requestAnimationFrame(tick);
+      else el.textContent=(useComma?target.toLocaleString():target.toString())+suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  var heroStats=document.querySelector('.hero-stats');
+  if(!heroStats) return;
+  if('IntersectionObserver' in window){
+    var statObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.querySelectorAll('.stat-number[data-target]').forEach(animate);
+          statObs.unobserve(e.target);
+        }
+      });
+    },{threshold:.4});
+    statObs.observe(heroStats);
+  } else {
+    heroStats.querySelectorAll('.stat-number[data-target]').forEach(animate);
+  }
+})();
+
+// 3D card tilt on hover (desktop only)
+(function(){
+  if(window.matchMedia('(hover:none)').matches) return;
+  var cards=document.querySelectorAll('.service-card, .scope-card, .why-card');
+  cards.forEach(function(card){
+    var intensity=4.5;
+    card.addEventListener('mouseenter',function(){
+      card.style.transition='transform .15s ease-out, box-shadow .3s ease, border-color .3s ease';
+    });
+    card.addEventListener('mousemove',function(e){
+      var r=card.getBoundingClientRect();
+      var x=e.clientX-r.left;
+      var y=e.clientY-r.top;
+      var cx=r.width/2, cy=r.height/2;
+      var rx=((y-cy)/cy)*-intensity;
+      var ry=((x-cx)/cx)*intensity;
+      card.style.transform='perspective(900px) rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg) translateY(-6px)';
+    });
+    card.addEventListener('mouseleave',function(){
+      card.style.transition='transform .5s ease, box-shadow .3s ease, border-color .3s ease';
+      card.style.transform='';
+    });
+  });
+})();
+
+// Magnetic gold CTAs (desktop only)
+(function(){
+  if(window.matchMedia('(hover:none)').matches) return;
+  var btns=document.querySelectorAll('.btn-gold');
+  btns.forEach(function(btn){
+    btn.addEventListener('mousemove',function(e){
+      var r=btn.getBoundingClientRect();
+      var x=e.clientX-r.left-r.width/2;
+      var y=e.clientY-r.top-r.height/2;
+      btn.style.transition='transform .12s ease';
+      btn.style.transform='translate('+(x*0.18).toFixed(1)+'px,'+((y*0.18)-2).toFixed(1)+'px)';
+    });
+    btn.addEventListener('mouseleave',function(){
+      btn.style.transition='transform .4s ease';
+      btn.style.transform='';
+    });
+  });
+})();
 </script>
 </body>
 </html>
