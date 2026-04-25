@@ -501,7 +501,7 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
   .testimonial-grid{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
   .trusted-logos{gap:12px}
-  .trusted-logo{min-width:calc(50% - 8px);padding:16px 20px;font-size:14px}
+  .trusted-logo{min-width:130px;padding:14px 20px;font-size:13px}
   .footer-bottom{flex-direction:column;text-align:center}
   .hero-content{padding:120px 0 60px}
   .cta-banner h2{font-size:28px}
@@ -555,7 +555,10 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
     -webkit-backdrop-filter:blur(20px);
     border-top:1px solid rgba(201,168,76,.18);
     box-shadow:0 -4px 24px rgba(0,0,0,.25);
+    transition:transform .3s ease;
+    will-change:transform;
   }
+  .mobile-cta-bar.cta-hidden{transform:translateY(110%)}
   .mobile-cta-item{
     flex:1;
     padding:12px 6px;
@@ -791,6 +794,136 @@ footer p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.7}
 /* SERVICE CARD ICON LINE-DRAW (set by JS, animated on hover) */
 .service-card-icon svg *{
   transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1);
+}
+
+/* BACK TO TOP BUTTON */
+.back-to-top{
+  position:fixed;
+  bottom:28px;
+  right:24px;
+  z-index:150;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),#d4b65e);
+  border:none;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(201,168,76,.35);
+  display:grid;
+  place-items:center;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(16px) scale(.85);
+  transition:opacity .3s ease,transform .35s cubic-bezier(.2,.7,.2,1.2),box-shadow .3s ease;
+}
+.back-to-top.visible{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0) scale(1);
+}
+.back-to-top:hover{
+  box-shadow:0 14px 32px rgba(201,168,76,.5);
+  transform:translateY(-2px) scale(1.06);
+}
+.back-to-top svg{
+  width:20px;
+  height:20px;
+  stroke:var(--black);
+  stroke-width:2.4;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+@media(max-width:768px){
+  .back-to-top{
+    bottom:96px;
+    right:14px;
+    width:42px;
+    height:42px;
+  }
+  .back-to-top svg{width:18px;height:18px}
+}
+
+/* ========== MOBILE FIXES ========== */
+html,body{overflow-x:hidden;max-width:100vw}
+
+/* Hide header phone button + Request Quote CTA on mobile (sticky bar handles both) */
+@media(max-width:768px){
+  .nav-right .btn-outline-dark{display:none!important}
+  .nav-right .btn-gold{display:none!important}
+
+  /* Floating header — margin from edges, rounded all four corners, scroll-hide */
+  header{transition:transform .3s ease,top .3s ease,background .3s ease,box-shadow .3s ease}
+  header.scrolled{
+    top:10px;
+    left:10px;
+    right:10px;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 28px rgba(0,0,0,.35);
+  }
+  header.header-hidden{transform:translateY(calc(-100% - 16px))}
+
+  /* Floating CTA bar — margin from edges and bottom, rounded all four corners */
+  .mobile-cta-bar{
+    left:10px;
+    right:10px;
+    bottom:10px;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 28px rgba(0,0,0,.4);
+  }
+  body{padding-bottom:80px}
+}
+
+/* Tighten everything for small mobile */
+@media(max-width:600px){
+  .brand img{width:38px;height:38px}
+  .brand-text{font-size:14px;line-height:1.2;letter-spacing:.2px}
+  .brand-text small{font-size:9px;letter-spacing:1.4px}
+  .brand{gap:10px}
+  .nav{height:68px}
+  .nav-right{gap:8px}
+  .nav-right .btn-gold{font-size:10px;padding:10px 14px;letter-spacing:.3px}
+  .container{padding:0 18px}
+  header > .container{padding:0 16px}
+
+  /* Trim every section's vertical padding */
+  .services,.scope,.area,.testimonials,.why,.about,.quote-section,.cta-banner,.process,.faq{padding:64px 0}
+  .trusted{padding:40px 0}
+  .services .section-head,.scope .section-head,.area .section-head,
+  .testimonials .section-head,.why .section-head,.process .section-head,
+  .faq .section-head,.quote-section .section-head{margin-bottom:36px}
+  .scope .section-head,.area .section-head{margin-bottom:32px}
+
+  /* Smaller H2s */
+  .services .section-head h2,.scope .section-head h2,.area .section-head h2,
+  .testimonials .section-head h2,.why .section-head h2,.process .section-head h2,
+  .faq .section-head h2,.quote-section .section-head h2{font-size:28px}
+  .about .section-head h2,.cta-banner h2{font-size:26px}
+
+  /* Hero slightly smaller */
+  .hero h1{font-size:32px}
+
+  /* Process / scope / FAQ tighter */
+  .process-grid{gap:14px}
+  .process-step{padding:26px 22px 22px}
+  .process-num{font-size:36px;margin-bottom:14px}
+  .scope-card{padding:26px 22px}
+  .scope-card h3{font-size:19px;margin-bottom:14px;padding-bottom:12px}
+  .faq-item summary{padding:18px 20px;font-size:15px;gap:12px}
+  .faq-content > div{padding:0 20px}
+  .faq-item[open] .faq-content > div{padding:0 20px 18px}
+  .faq-content p{font-size:14px}
+
+  /* Quote form tighter */
+  .quote-box{padding:24px 18px}
+
+  /* Section dividers */
+  .section-divider{height:36px;margin-top:-36px}
+
+  /* Thin gold dividers spacing */
+  .thin-gold-divider{margin-bottom:36px}
 }
 </style>
 </head>
@@ -1355,7 +1488,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px">
+    <div class="footer-grid">
       <div>
         <h4>Oakland Cleaning Services, Inc.</h4>
         <p>Southeast Michigan's premier multifamily and commercial cleaning company. Delivering premium property care to Oakland County's finest communities since 1996.</p>
@@ -1402,6 +1535,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </footer>
+
+<!-- Back-to-top button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" type="button">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
 <!-- Sticky mobile CTA bar -->
 <div class="mobile-cta-bar" aria-label="Quick contact">
@@ -1645,6 +1783,7 @@ if(window.L){
     wheelMultiplier:1,
     touchMultiplier:1.5,
   });
+  window._lenis=lenis;
   function raf(time){
     lenis.raf(time);
     requestAnimationFrame(raf);
@@ -1661,6 +1800,48 @@ if(window.L){
       lenis.scrollTo(target,{offset:-60,duration:1.2});
     });
   });
+})();
+
+// Back-to-top button
+(function(){
+  var btn=document.getElementById('backToTop');
+  if(!btn) return;
+  var threshold=900;
+  window.addEventListener('scroll',function(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(y>threshold){btn.classList.add('visible');}
+    else{btn.classList.remove('visible');}
+  },{passive:true});
+  btn.addEventListener('click',function(){
+    if(window._lenis){
+      window._lenis.scrollTo(0,{duration:1.2});
+    } else {
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+  });
+})();
+
+// Mobile header + CTA bar — hide on scroll-down, reveal on scroll-up
+(function(){
+  var bar=document.querySelector('.mobile-cta-bar');
+  var hdr=document.querySelector('header');
+  if(!bar&&!hdr) return;
+  var lastY=0;
+  var threshold=10;
+  function update(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    var diff=y-lastY;
+    if(Math.abs(diff)<threshold) return;
+    if(diff>0&&y>120){
+      if(bar) bar.classList.add('cta-hidden');
+      if(hdr) hdr.classList.add('header-hidden');
+    } else if(diff<0){
+      if(bar) bar.classList.remove('cta-hidden');
+      if(hdr) hdr.classList.remove('header-hidden');
+    }
+    lastY=y;
+  }
+  window.addEventListener('scroll',update,{passive:true});
 })();
 
 // Service card icon line-draw on hover
