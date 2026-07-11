@@ -220,14 +220,36 @@ header.scrolled{
   background:rgba(10,10,15,.95);backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(201,168,76,.1);
 }
+header.scrolled::after{
+  content:'';position:absolute;left:0;right:0;bottom:-1px;height:1px;
+  background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,.55) 50%,transparent 100%);
+}
 .nav{display:flex;align-items:center;justify-content:space-between;height:80px}
 .brand{display:flex;align-items:center;gap:14px}
-.brand img{width:48px;height:48px;border-radius:8px;object-fit:contain}
-.brand-text{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#fff;letter-spacing:.3px;white-space:nowrap}
-.brand-text small{display:block;font-family:'Inter',sans-serif;font-weight:400;color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase}
+.brand img{
+  width:48px;height:48px;border-radius:8px;object-fit:contain;
+  box-shadow:0 0 0 1px rgba(201,168,76,.35),0 0 18px rgba(110,235,205,.18);
+  transition:box-shadow .4s ease,transform .4s ease;
+}
+.brand:hover img{box-shadow:0 0 0 1px rgba(201,168,76,.7),0 0 26px rgba(110,235,205,.35);transform:scale(1.05)}
+.brand-text{
+  font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:.3px;white-space:nowrap;
+  background:linear-gradient(90deg,#fff 0%,#f0e3bd 45%,#fff 90%);
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:brandSheen 7s ease-in-out infinite;
+}
+@keyframes brandSheen{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.brand-text small{display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  background:linear-gradient(90deg,var(--gold),#e8d9a0,var(--gold));background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:brandSheen 7s ease-in-out infinite;}
 .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
-.nav-links a{font-weight:500;font-size:13px;color:rgba(255,255,255,.7);letter-spacing:.5px;text-transform:uppercase;transition:color .3s;white-space:nowrap}
+.nav-links a{font-weight:500;font-size:13px;color:rgba(255,255,255,.7);letter-spacing:.5px;text-transform:uppercase;transition:color .3s;white-space:nowrap;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .3s ease}
 .nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
 .nav-right{display:flex;gap:12px;align-items:center}
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .hamburger span{display:block;width:22px;height:1.5px;background:#fff;margin:5px 0;transition:.3s}
@@ -353,6 +375,9 @@ header.scrolled{
   backdrop-filter:blur(8px);transition:border-color .3s;
 }
 .scope-card:hover{border-color:rgba(201,168,76,.25)}
+.scope-card-img{margin:-36px -36px 24px;height:200px;overflow:hidden;border-radius:var(--radius) var(--radius) 0 0}
+.scope-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.scope-card:hover .scope-card-img img{transform:scale(1.05)}
 .scope-card h3{
   font-size:22px;margin-bottom:20px;padding-bottom:16px;
   border-bottom:1px solid rgba(201,168,76,.2);color:#fff;
@@ -1243,6 +1268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="scope-grid">
       <div class="scope-card reveal">
+        <div class="scope-card-img"><img src="/images/scope-kitchen.jpg" alt="Immaculate apartment kitchen with stone island and wood cabinetry" loading="lazy" width="800" height="450"></div>
         <h3><svg style="display:inline-block;vertical-align:middle;width:22px;height:22px;stroke:var(--gold);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-right:8px" viewBox="0 0 24 24"><path d="M3 2h18v20H3z"/><path d="M3 10h18"/><path d="M10 2v8"/><circle cx="15" cy="6" r="1.5"/><path d="M8 14v4"/><path d="M12 14v4"/><path d="M16 14v4"/></svg>Kitchen</h3>
         <ul class="scope-list">
           <li>Countertops, backsplash, sink, faucet, and disposal area</li>
@@ -1257,6 +1283,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="scope-card reveal">
+        <div class="scope-card-img"><img src="/images/scope-bathroom.jpg" alt="Spotless apartment bathroom with glass shower and double vanity" loading="lazy" width="800" height="450"></div>
         <h3><svg style="display:inline-block;vertical-align:middle;width:22px;height:22px;stroke:var(--gold);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-right:8px" viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M5 12v4a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-4"/><path d="M6 12V5a2 2 0 0 1 2-2h1"/><circle cx="12" cy="8" r="0"/><path d="M4 20h16"/></svg>Bathrooms</h3>
         <ul class="scope-list">
           <li>Tub, shower, and shower doors — tile, grout, and fixtures detailed</li>
@@ -1270,6 +1297,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="scope-card reveal">
+        <div class="scope-card-img"><img src="/images/scope-living.jpg" alt="Spotless apartment living area in warm evening light" loading="lazy" width="800" height="450"></div>
         <h3><svg style="display:inline-block;vertical-align:middle;width:22px;height:22px;stroke:var(--gold);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-right:8px" viewBox="0 0 24 24"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 12V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v4"/><path d="M2 20h20"/><path d="M2 16h20"/></svg>Bedrooms & Living Areas</h3>
         <ul class="scope-list">
           <li>All windows cleaned — interior and exterior where accessible, including sills and tracks</li>
@@ -1283,6 +1311,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="scope-card reveal">
+        <div class="scope-card-img"><img src="/images/scope-general.jpg" alt="Clean apartment laundry room with washer and dryer" loading="lazy" width="800" height="450"></div>
         <h3><svg style="display:inline-block;vertical-align:middle;width:22px;height:22px;stroke:var(--gold);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-right:8px" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>General & Additional</h3>
         <ul class="scope-list">
           <li>Washer/dryer and laundry area — including floors, bi-folds, and tracks</li>
@@ -1325,8 +1354,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="area-tag" href="/shelby-twp/">Shelby Twp</a>
       <a class="area-tag" href="/sterling-heights/">Sterling Heights</a>
       <a class="area-tag" href="/washington-twp/">Washington Twp</a>
-      <div class="area-tag">Oakland County</div>
-      <div class="area-tag">Macomb County</div>
     </div>
   </div>
 </section>
