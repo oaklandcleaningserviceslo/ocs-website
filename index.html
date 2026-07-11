@@ -260,19 +260,20 @@ header.scrolled::after{
 /* HERO */
 .hero{
   min-height:100vh;display:flex;align-items:center;
-  background:#08080c;color:#fff;
+  background:#08080c url('/images/hero-bg.jpg') center/cover no-repeat;
+  color:#fff;
   position:relative;overflow:hidden;
 }
-#vanta-bg{position:absolute;inset:0;z-index:1}
 .hero-overlay{
   position:absolute;inset:0;z-index:2;
-  background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.6) 100%);
+  background:linear-gradient(180deg,rgba(0,0,0,.66) 0%,rgba(0,0,0,.52) 45%,rgba(0,0,0,.78) 100%);
 }
 .hero-content{position:relative;z-index:3;text-align:center;max-width:800px;margin:0 auto;padding:120px 0 80px}
 .hero-badge{
   display:inline-flex;align-items:center;gap:10px;
   padding:10px 24px;border-radius:999px;
-  background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);
+  background:rgba(8,8,12,.55);border:1px solid rgba(201,168,76,.35);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   font-family:'Inter',sans-serif;font-weight:500;font-size:12px;
   letter-spacing:2px;text-transform:uppercase;color:var(--gold);
   margin-bottom:32px;
@@ -1055,9 +1056,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </header>
 
-<!-- HERO WITH VANTA.JS 3D FOG -->
+<!-- HERO -->
 <section class="hero">
-  <div id="vanta-bg"></div>
   <div class="hero-overlay"></div>
   <div class="container">
     <div class="hero-content">
@@ -1652,30 +1652,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- SCRIPTS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
 <script>
-// Vanta.js 3D Fog Background
-if(window.VANTA){
-  VANTA.FOG({
-    el:"#vanta-bg",
-    mouseControls:true,
-    touchControls:true,
-    gyroControls:false,
-    minHeight:200,
-    minWidth:200,
-    highlightColor:0x252035,
-    midtoneColor:0x121119,
-    lowlightColor:0x08080c,
-    baseColor:0x08080c,
-    blurFactor:.55,
-    speed:.85,
-    zoom:.65
-  });
-}
-
 // Year
 document.getElementById("year").textContent=new Date().getFullYear();
 
