@@ -123,6 +123,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,
 .city-hero{padding:160px 0 100px;background:var(--black);color:#fff;text-align:center;position:relative;overflow:hidden}
 .city-hero::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.06),transparent 60%);pointer-events:none}
 .city-hero .container{position:relative;z-index:2}
+.city-hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,14,.62) 0%,rgba(9,9,14,.9) 100%),url('/images/city-shelby-twp.jpg') center/cover}
 .city-hero h1{font-size:52px;margin-bottom:20px;line-height:1.1}
 .city-hero h1 em{font-style:italic;color:var(--gold)}
 .city-hero p{font-size:18px;color:rgba(255,255,255,.7);max-width:600px;margin:0 auto 36px;line-height:1.7;font-weight:300}
@@ -228,6 +229,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- CITY HERO -->
 <section class="city-hero">
+<div class="city-hero-bg" aria-hidden="true"></div>
   <div class="container">
     <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Shelby Twp</div>
     <h1>Apartment &amp; Commercial Cleaning in <em>Shelby Twp</em></h1>
