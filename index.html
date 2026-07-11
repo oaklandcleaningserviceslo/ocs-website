@@ -517,6 +517,10 @@ header.scrolled::after{
   background:var(--charcoal);color:#fff;text-align:center;
   position:relative;overflow:hidden;
 }
+.cta-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(13,13,18,.72) 0%,rgba(13,13,18,.82) 100%),url('/images/cta-bg.jpg') center/cover no-repeat;
+}
 .cta-banner::before{
   content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);
   width:600px;height:600px;border-radius:50%;
@@ -1569,6 +1573,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- CTA BANNER -->
 <section class="cta-banner" id="contact">
+  <div class="cta-bg" aria-hidden="true"></div>
   <div class="container">
     <h2>Ready to Elevate Your Property?</h2>
     <p>Speak directly with our team about a tailored cleaning program for your community.</p>
