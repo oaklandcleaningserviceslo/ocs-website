@@ -319,6 +319,9 @@ header.scrolled{
 }
 .service-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.1)}
 .service-card:hover::before{opacity:1}
+.service-card-img{height:190px;overflow:hidden}
+.service-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.service-card:hover .service-card-img img{transform:scale(1.05)}
 .service-card-inner{padding:36px 28px}
 .service-card-icon{
   margin-bottom:20px;display:flex;align-items:center;justify-content:center;
@@ -1099,6 +1102,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="service-grid">
       <article class="service-card reveal">
+        <div class="service-card-img"><img src="/images/service-turnovers.jpg" alt="Move-in ready apartment living room with fireplace" loading="lazy" width="800" height="450"></div>
         <div class="service-card-inner">
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
           <h3>Premium Apartment Turnovers</h3>
@@ -1108,6 +1112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
 
       <article class="service-card reveal">
+        <div class="service-card-img"><img src="/images/service-clubhouse.jpg" alt="Clubhouse great room with stone fireplace and lounge seating" loading="lazy" width="800" height="450"></div>
         <div class="service-card-inner">
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22V6h6v16"/><path d="M4 10h16"/></svg></span>
           <h3>Clubhouse & Community Rooms</h3>
@@ -1117,6 +1122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
 
       <article class="service-card reveal">
+        <div class="service-card-img"><img src="/images/service-fitness.jpg" alt="Apartment community fitness center with cardio equipment" loading="lazy" width="800" height="450"></div>
         <div class="service-card-inner">
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M6.5 6.5a3.5 3.5 0 1 0 7 0 3.5 3.5 0 1 0-7 0"/><path d="M2 21v-2a4 4 0 0 1 4-4h4"/><path d="M16 11l2 2 4-4"/><path d="M22 16v5h-5"/></svg></span>
           <h3>Fitness Center Cleaning</h3>
@@ -1126,6 +1132,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
 
       <article class="service-card reveal">
+        <div class="service-card-img"><img src="/images/service-model-unit.jpg" alt="Staged model unit dining area ready for tours" loading="lazy" width="800" height="450"></div>
         <div class="service-card-inner">
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
           <h3>Model Unit Presentation</h3>
@@ -1135,6 +1142,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
 
       <article class="service-card reveal">
+        <div class="service-card-img"><img src="/images/service-leasing.jpg" alt="Leasing office lounge with coffee bar and seating" loading="lazy" width="800" height="450"></div>
         <div class="service-card-inner">
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg></span>
           <h3>Leasing Office Cleaning</h3>
@@ -1144,6 +1152,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
 
       <article class="service-card reveal">
+        <div class="service-card-img"><img src="/images/service-hallways.jpg" alt="Clean, well-lit apartment community hallway" loading="lazy" width="800" height="450"></div>
         <div class="service-card-inner">
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/><path d="M2 20h20"/></svg></span>
           <h3>Common Hallways & Stairwells</h3>
@@ -1153,6 +1162,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
 
       <article class="service-card reveal">
+        <div class="service-card-img"><img src="/images/service-pool.jpg" alt="Indoor community pool house with lounge seating" loading="lazy" width="800" height="450"></div>
         <div class="service-card-inner">
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span>
           <h3>Pool House & Outdoor Amenities</h3>
@@ -1162,6 +1172,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
 
       <article class="service-card reveal">
+        <div class="service-card-img"><img src="/images/service-offices.jpg" alt="Corporate building lobby with stone accents and chandelier" loading="lazy" width="800" height="450"></div>
         <div class="service-card-inner">
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="18" rx="2" ry="2"/><path d="M16 8h4a2 2 0 0 1 2 2v11h-6"/><path d="M5 7h2"/><path d="M5 11h2"/><path d="M5 15h2"/></svg></span>
           <h3>Corporate Offices</h3>
@@ -1171,6 +1182,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
 
       <article class="service-card reveal">
+        <div class="service-card-img"><img src="/images/service-powerwashing.jpg" alt="Outdoor amenity terrace with clean stone pavers and fire pit" loading="lazy" width="800" height="450"></div>
         <div class="service-card-inner">
           <span class="service-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2v6"/><path d="M12 12v2"/><path d="M12 18v4"/><circle cx="12" cy="9" r="1"/><path d="M7 20a5 5 0 0 1 10 0"/><path d="M5 12h14"/></svg></span>
           <h3>Powerwashing</h3>
