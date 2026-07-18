@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://formsubmit.co https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net; frame-src 'self' https://www.googletagmanager.com https://td.doubleclick.net; object-src 'none'; base-uri 'self'; form-action 'self' https://formsubmit.co; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2NBFPWN6WS"></script>
 <script>
@@ -166,7 +168,7 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-heigh
   <div class="feedback-card">
     <form id="feedback-form" class="form-grid" action="https://formsubmit.co/oaklandcleaningserviceslo@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New Client Testimonial - OCS Website" />
-      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_captcha" value="true" />
       <input type="hidden" name="_next" id="next-url" value="https://ocslakeorion.com/feedback/?thanks=1" />
       <input type="text" name="_honey" style="display:none" />
       <input type="hidden" name="rating" id="rating-value" value="" />
