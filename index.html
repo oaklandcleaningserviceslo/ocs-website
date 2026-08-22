@@ -229,11 +229,10 @@ header.scrolled::after{
 .nav{display:flex;align-items:center;justify-content:space-between;height:80px}
 .brand{display:flex;align-items:center;gap:14px}
 .brand img{
-  width:48px;height:48px;border-radius:8px;object-fit:contain;
-  box-shadow:0 0 0 1px rgba(201,168,76,.35),0 0 18px rgba(110,235,205,.18);
-  transition:box-shadow .4s ease,transform .4s ease;
+  width:48px;height:48px;border-radius:50%;object-fit:contain;
+  transition:transform .4s ease;
 }
-.brand:hover img{box-shadow:0 0 0 1px rgba(201,168,76,.7),0 0 26px rgba(110,235,205,.35);transform:scale(1.05)}
+.brand:hover img{transform:scale(1.05)}
 .brand-text{
   font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:.3px;white-space:nowrap;
   background:linear-gradient(90deg,#fff 0%,#f0e3bd 45%,#fff 90%);
