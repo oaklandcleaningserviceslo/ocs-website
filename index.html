@@ -1687,9 +1687,12 @@ document.querySelectorAll(".reveal").forEach(function(el){observer.observe(el)})
 // Service Area Map
 if(window.L){
   var map=L.map("service-map",{scrollWheelZoom:false,zoomControl:true}).setView([42.66,-83.10],11);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-    maxZoom:19
+  // Basemap: Esri World Light Gray Canvas (no API key). CARTO basemaps began
+  // watermarking tiles "API KEY REQUIRED" in Sep 2026, so they were replaced.
+  // Note Esri's tile path order is {z}/{y}/{x}; native max zoom is 16.
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",{
+    attribution:'Tiles &copy; <a href="https://www.esri.com/">Esri</a> &mdash; Esri, DeLorme, NAVTEQ',
+    maxZoom:16
   }).addTo(map);
 
   // Service area boundary polygon (starts invisible, fades in on scroll)
