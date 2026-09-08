@@ -1686,7 +1686,13 @@ document.querySelectorAll(".reveal").forEach(function(el){observer.observe(el)})
 
 // Service Area Map
 if(window.L){
-  var map=L.map("service-map",{scrollWheelZoom:false,zoomControl:true}).setView([42.66,-83.10],11);
+  // Center on the city cluster so Lake Orion (north) and Sterling Heights (south)
+  // both sit inside the frame. Zoom 11 needs ~880px of width to hold all ten
+  // cities; narrower containers (tablet/phone, where the map is also shorter)
+  // drop to zoom 10 so nothing falls off the edges.
+  var mapEl=document.getElementById('service-map');
+  var mapZoom=(mapEl && mapEl.clientWidth>=880)?11:10;
+  var map=L.map("service-map",{scrollWheelZoom:false,zoomControl:true}).setView([42.685,-83.13],mapZoom);
   // Basemap: Esri World Light Gray Canvas (no API key). CARTO basemaps began
   // watermarking tiles "API KEY REQUIRED" in Sep 2026, so they were replaced.
   // Note Esri's tile path order is {z}/{y}/{x}; native max zoom is 16.
@@ -1708,7 +1714,6 @@ if(window.L){
     dashArray:"",lineJoin:"round",className:"service-poly"
   }).addTo(map);
   // Fade polygon in when map enters viewport
-  var mapEl=document.getElementById('service-map');
   if(mapEl && 'IntersectionObserver' in window){
     var polyObs=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
