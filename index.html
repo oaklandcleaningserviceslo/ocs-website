@@ -1502,7 +1502,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="quote-box reveal">
-      <form class="form-grid" action="https://formsubmit.co/oaklandcleaningserviceslo@gmail.com" method="POST">
+      <form id="quote-form" class="form-grid" action="https://formsubmit.co/oaklandcleaningserviceslo@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New Consultation Request - OCS Website" />
         <input type="hidden" name="_captcha" value="true" />
         <input type="hidden" name="_next" value="https://ocslakeorion.com" />
@@ -1982,6 +1982,58 @@ if(window.L){
       setTimeout(function(){animating=false;},1500);
     });
   });
+})();
+</script>
+
+<!-- ============================================================
+     CONVERSION TRACKING (added Sep 15, 2026)
+     The quote form is the site's primary conversion and had NO tracking of any
+     kind — GTM was installed on every page with zero event tags, so GA4 could
+     not answer "how many quote requests did the site produce". Same for phone,
+     text and email clicks. These events fix that.
+
+     Event names are GA4 recommended//custom:
+       generate_lead  - quote form submitted   (mark as a KEY EVENT in GA4 admin)
+       phone_click / text_click / email_click  - contact intent
+
+     Notes:
+     - gtag sends via sendBeacon, so the form event survives the FormSubmit
+       navigation; no preventDefault, the form must still submit normally.
+     - Inline script is allowed by the page CSP ('unsafe-inline' in script-src)
+       and adds NO new external host, so the CSP meta needs no change.
+     ============================================================ -->
+<script>
+(function () {
+  if (typeof gtag !== 'function') return;
+
+  var form = document.getElementById('quote-form');
+  if (form) {
+    form.addEventListener('submit', function () {
+      gtag('event', 'generate_lead', {
+        event_category: 'conversion',
+        event_label: 'quote_form',
+        form_location: 'index_quote_section'
+      });
+    });
+  }
+
+  // Contact-intent clicks. Delegated so it covers the sticky mobile bar,
+  // the CTA banner and all footer links without per-link wiring.
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    var name = href.indexOf('tel:') === 0 ? 'phone_click'
+             : href.indexOf('sms:') === 0 ? 'text_click'
+             : href.indexOf('mailto:') === 0 ? 'email_click'
+             : null;
+    if (!name) return;
+    gtag('event', name, {
+      event_category: 'conversion',
+      event_label: href,
+      link_text: (a.innerText || '').trim().slice(0, 60)
+    });
+  }, true);
 })();
 </script>
 </body>
