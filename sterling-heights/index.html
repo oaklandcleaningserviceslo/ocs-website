@@ -400,5 +400,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+
+<!-- ============================================================
+     OCS-CONTACT-CLICK-TRACKING (added Sep 15, 2026)
+     Contact-intent events for GA4. Delegated listener covers the sticky mobile
+     bar, CTA buttons and every footer link with no per-link wiring.
+     Inline script is already permitted by this page's CSP and adds no new
+     external host, so the CSP meta needs no change.
+     (index.html carries this PLUS the generate_lead form event.)
+     ============================================================ -->
+<script>
+(function () {
+  if (typeof gtag !== 'function') return;
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = (a.getAttribute('href') || '').toLowerCase();
+    var name = href.indexOf('tel:') === 0 ? 'phone_click'
+             : href.indexOf('sms:') === 0 ? 'text_click'
+             : href.indexOf('mailto:') === 0 ? 'email_click'
+             : null;
+    if (!name) return;
+    gtag('event', name, {
+      event_category: 'conversion',
+      event_label: href,
+      link_text: (a.innerText || '').trim().slice(0, 60)
+    });
+  }, true);
+})();
+</script>
 </body>
 </html>
