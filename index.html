@@ -20,6 +20,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PWX5HG2K');</script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<script>
+  // Seasonal hero (approved 11/18/26). Winter starts Nov 15 (Michigan), the rest by quarter.
+  // ?season=winter|spring|summer|fall forces one, for previews.
+  (function () {
+    var d = new Date(), m = d.getMonth(), day = d.getDate();
+    var s = (m === 11 || m <= 1 || (m === 10 && day >= 15)) ? "winter" : m <= 4 ? "spring" : m <= 7 ? "summer" : "fall";
+    var f = /[?&]season=(winter|spring|summer|fall)\b/.exec(location.search);
+    document.documentElement.setAttribute("data-season", f ? f[1] : s);
+  })();
+</script>
 <title>Oakland Cleaning Services | Apartment Turnover & Commercial Cleaning | Oakland County, MI</title>
 <meta name="description" content="Southeast Michigan's premier multifamily and commercial cleaning company. Premium apartment turnovers, amenity care, and property maintenance for Class A communities. Serving 30+ properties since 1994." />
 <meta name="keywords" content="luxury apartment cleaning Oakland County, premium multifamily cleaning Michigan, premium apartment turnover, commercial cleaning Sterling Heights, property management cleaning" />
@@ -265,6 +275,12 @@ header.scrolled::after{
   color:#fff;
   position:relative;overflow:hidden;
 }
+/* Seasonal hero: same scene, only the window view changes. The <head> script sets data-season;
+   without it (no JS) the original towels image above stays. Only the matching image downloads. */
+html[data-season="winter"] .hero{background-image:url('/images/hero-winter.jpg')}
+html[data-season="spring"] .hero{background-image:url('/images/hero-spring.jpg')}
+html[data-season="summer"] .hero{background-image:url('/images/hero-summer.jpg')}
+html[data-season="fall"] .hero{background-image:url('/images/hero-fall.jpg')}
 .hero-overlay{
   position:absolute;inset:0;z-index:2;
   background:linear-gradient(180deg,rgba(0,0,0,.66) 0%,rgba(0,0,0,.52) 45%,rgba(0,0,0,.78) 100%);
